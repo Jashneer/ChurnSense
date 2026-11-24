@@ -1,0 +1,381 @@
+/*
+ * Tailwind v4 entry: config lives here, with no tailwind.config.js or PostCSS plugin.
+ * - Keep every @import in this top block, above @theme and the rest of the file. Install an
+ *   npm package before @importing its CSS. Never @import a remote URL (web fonts, CDN CSS): the
+ *   build resolves @import from the filesystem. Load those with a <link> in the head() of
+ *   src/routes/__root.tsx and name the family in a --font-* token in @theme inline below.
+ */
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * ChurnSense design system — warm editorial, soft slate.
+ * Alabaster stone background, white cards, warm borders, ink typography.
+ * Terracotta = high churn risk, sage/teal = low churn risk.
+ */
+
+@theme inline {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-risk-high: var(--risk-high);
+  --color-risk-high-soft: var(--risk-high-soft);
+  --color-risk-low: var(--risk-low);
+  --color-risk-low-soft: var(--risk-low-soft);
+  --color-subtle: var(--subtle);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --shadow-card: var(--shadow-card);
+  --shadow-lift: var(--shadow-lift);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.973 0.005 95.1); /* #F7F6F2 */
+  --foreground: oklch(0.21 0.006 285.9); /* #18181B */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.006 285.9);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.006 285.9);
+  --primary: oklch(0.21 0.006 285.9);
+  --primary-foreground: oklch(0.984 0.004 106.5);
+  --secondary: oklch(0.946 0.008 91.5);
+  --secondary-foreground: oklch(0.21 0.006 285.9);
+  --muted: oklch(0.946 0.008 91.5);
+  --muted-foreground: oklch(0.442 0.015 285.8); /* #52525B */
+  --subtle: oklch(0.712 0.013 286.1);
+  --accent: oklch(0.946 0.008 91.5);
+  --accent-foreground: oklch(0.21 0.006 285.9);
+  --destructive: oklch(0.553 0.174 38.4);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.916 0.01 87.5); /* #E6E3DC */
+  --input: oklch(0.916 0.01 87.5);
+  --ring: oklch(0.442 0.015 285.8);
+
+  --risk-high: oklch(0.553 0.174 38.4); /* #C2410C */
+  --risk-high-soft: oklch(0.955 0.018 48.5);
+  --risk-low: oklch(0.511 0.086 186.4); /* #0F766E */
+  --risk-low-soft: oklch(0.952 0.013 185.1);
+
+  --shadow-card: 0 1px 2px oklch(0.21 0.006 285.9 / 4%), 0 1px 1px oklch(0.21 0.006 285.9 / 3%);
+  --shadow-lift: 0 10px 24px -12px oklch(0.21 0.006 285.9 / 18%), 0 2px 4px oklch(0.21 0.006 285.9 / 4%);
+
+  --chart-1: oklch(0.553 0.174 38.4);
+  --chart-2: oklch(0.511 0.086 186.4);
+  --chart-3: oklch(0.442 0.015 285.8);
+  --chart-4: oklch(0.712 0.013 286.1);
+  --chart-5: oklch(0.916 0.01 87.5);
+  --sidebar: oklch(0.984 0.004 106.5);
+  --sidebar-foreground: oklch(0.21 0.006 285.9);
+  --sidebar-primary: oklch(0.21 0.006 285.9);
+  --sidebar-primary-foreground: oklch(0.984 0.004 106.5);
+  --sidebar-accent: oklch(0.946 0.008 91.5);
+  --sidebar-accent-foreground: oklch(0.21 0.006 285.9);
+  --sidebar-border: oklch(0.916 0.01 87.5);
+  --sidebar-ring: oklch(0.442 0.015 285.8);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: var(--risk-high-soft);
+    color: var(--foreground);
+  }
+}
+
+/* ---------- Motion (150–250ms, ease-out) ---------- */
+@keyframes enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-enter {
+  animation: enter-up 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes field-flash {
+  0% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  20% {
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--flash, var(--ring)) 35%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes timer-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@utility animate-field-flash {
+  border-radius: var(--radius-md);
+  animation: field-flash 900ms ease-out both;
+}
+
+@utility flash-high {
+  --flash: var(--risk-high);
+}
+
+@utility flash-low {
+  --flash: var(--risk-low);
+}
+
+@utility flash-neutral {
+  --flash: var(--foreground);
+}
+
+@utility animate-pop {
+  animation: pop-in 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@utility animate-shimmer {
+  background-image: linear-gradient(
+    90deg,
+    var(--secondary) 0%,
+    var(--card) 50%,
+    var(--secondary) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+@utility animate-timer {
+  transform-origin: left;
+  animation: timer-fill var(--timer, 4500ms) linear both;
+}
+
+@keyframes ripple {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.35;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-slide-in {
+  animation: slide-in-right 250ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@utility animate-ripple {
+  animation: ripple 380ms ease-out forwards;
+}
+
+/* Scroll reveal: elements start slightly lowered and fade in when they enter the viewport. */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 250ms ease-out,
+    transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Pointer-driven tilt + warm spotlight. Values come from --rx/--ry/--mx/--my set in JS. */
+@utility tilt {
+  position: relative;
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 200ms ease-out;
+  &:hover > .tilt-glare {
+    opacity: 1;
+  }
+}
+
+@utility tilt-glare {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+  background: radial-gradient(
+    360px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklab, var(--risk-high) 7%, transparent),
+    transparent 60%
+  );
+}
+
+@utility link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition:
+    background-size 220ms ease-out,
+    color 200ms ease-out;
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+@utility transition-soft {
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+}
+
+@utility hover-lift {
+  transition-property: transform, box-shadow, border-color, background-color;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lift);
+  }
+  &:focus-visible {
+    outline: none;
+    border-color: var(--subtle);
+  }
+}
+
+@utility surface-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+}
+
+@utility field-control {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--input);
+  background-color: var(--card);
+  padding-inline: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+  &:hover {
+    border-color: var(--subtle);
+  }
+  &:focus {
+    outline: none;
+    border-color: var(--foreground);
+    box-shadow: 0 0 0 3px oklch(0.21 0.006 285.9 / 8%);
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}
